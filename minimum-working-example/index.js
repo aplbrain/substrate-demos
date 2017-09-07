@@ -10,8 +10,6 @@ class Axes extends Layer {
 
 
 let V = new Visualizer({
-    backgroundColor: new window.THREE.Color(0xffffff),
-    startingCameraPosition: [0, 0, -100],
     renderLayers: {
         axis: new Axes(),
     },
