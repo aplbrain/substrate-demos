@@ -1,17 +1,10 @@
 import Visualizer from 'apl-substrate/components/Visualizer'
-import Layer from 'apl-substrate/components/Layer';
-
-
-class Axes extends Layer {
-    requestInit(scene) {
-        scene.add(new window.THREE.AxisHelper(5));
-    }
-}
+import AxisLayer from 'apl-substrate/components/layers/AxisLayer';
 
 
 let V = new Visualizer({
     renderLayers: {
-        axis: new Axes(),
+        axis: new AxisLayer(),
     },
     targetElement: "render-target",
     // Start with width and height of 500px:
