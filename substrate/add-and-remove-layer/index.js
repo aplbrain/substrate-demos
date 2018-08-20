@@ -1,28 +1,39 @@
 import Visualizer from 'apl-substrate/components/Visualizer'
 import Layer from 'apl-substrate/components/Layer';
+import AxisLayer from 'apl-substrate/components/layers/AxisLayer';
 
-class Axes extends Layer {
+import * as THREE from 'three';
+
+class LightingLayer extends Layer {
+    /*
+    Classic three-point lighting scheme, as a substrate layer.
+    */
+
     requestInit(scene) {
-        scene.add(new window.THREE.AxisHelper(5));
+        let self = this;
+        // Key
+        let key = new THREE.PointLight(0xfff, 2, 100);
+        key.position.set(5, 5, 5);
+        self.children.push(scene.add(key));
+        // Fill
+        let fill = new THREE.PointLight(0xccc, 0.6, 100);
+        fill.position.set(5, -5, 4);
+        self.children.push(scene.add(fill));
+        // Back
+        let back = new THREE.PointLight(0xffeedd, 0.4, 100);
+        back.position.set(-5, 5, 3);
+        self.children.push(scene.add(back));
     }
 }
-
-class Lighting extends Layer {
-    requestInit(scene) {
-        var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-        scene.add( light );
-    }
-}
-
 
 class SphereLayer extends Layer {
     requestInit(scene) {
         // Notice that the color changes every time the layer is re-added
         // because the randomization takes place here:
         let color = Math.random() * 0xffffff;
-        this.s = new window.THREE.Mesh(
-            new window.THREE.SphereGeometry(2, 32, 32),
-            new window.THREE.MeshLambertMaterial({ color })
+        this.s = new THREE.Mesh(
+            new THREE.SphereGeometry(Math.random() * 2 + 2, 32, 32),
+            new THREE.MeshLambertMaterial({ color })
         );
         scene.add(this.s);
     }
@@ -31,7 +42,6 @@ class SphereLayer extends Layer {
         /*
         This function must be implemented in any layer that will be removed.
         */
-        console.log(this.s)
         scene.remove(this.s);
     }
 }
@@ -39,9 +49,9 @@ class SphereLayer extends Layer {
 
 let V = new Visualizer({
     renderLayers: {
-        axis: new Axes(),           // This layer doesn't go anywhere`
-        light: new Lighting(),      // This layer doesn't go anywhere
-        sphere: new SphereLayer(),  // This layer can be deleted and re-added
+        axis: new AxisLayer(),          // This layer doesn't go anywhere
+        light: new LightingLayer(),     // This layer doesn't go anywhere
+        sphere: new SphereLayer(),      // This layer can be deleted and re-added
     },
     targetElement: "render-target"
 });
@@ -58,4 +68,4 @@ window.addEventListener('keyup', function() {
     } else {
         V.addLayer('sphere', new SphereLayer())
     }
-})
+});
