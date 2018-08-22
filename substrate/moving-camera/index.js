@@ -1,19 +1,13 @@
 import Visualizer from 'apl-substrate/components/Visualizer'
-import Layer from 'apl-substrate/components/Layer';
+import AxisLayer from 'apl-substrate/components/layers/AxisLayer';
 
-
-class Axes extends Layer {
-    requestInit(scene) {
-        scene.add(new window.THREE.AxisHelper(5));
-    }
-}
-
+import * as THREE from 'three';
 
 let V = new Visualizer({
-    backgroundColor: new window.THREE.Color(0xffffff),
+    backgroundColor: new THREE.Color(0xffffff),
     startingCameraPosition: [0, 0, -100],
     renderLayers: {
-        axis: new Axes(),
+        axis: new AxisLayer(),
     },
     targetElement: "render-target"
 });
