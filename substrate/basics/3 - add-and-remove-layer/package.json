@@ -1,0 +1,15 @@
+{
+  "name": "add-and-remove-layer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack index.js bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apl-substrate": "^1.1.0",
+    "three": "^0.95.0"
+  }
+}

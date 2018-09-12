@@ -1,4 +1,4 @@
 *.DS_Store
 pytri/.ipynb_checkpoints
-*/node_modules/
+**/*/node_modules/
 */bundle.js
