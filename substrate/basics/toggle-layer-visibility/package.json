@@ -1,0 +1,19 @@
+{
+  "name": "toggle-layer-visibility",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apl-substrate": "/Users/cowlehp1/Viz/substrate",
+    "three": "^0.95.0",
+    "webpack": "^4.19.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.1"
+  }
+}
