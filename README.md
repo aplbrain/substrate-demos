@@ -6,6 +6,8 @@ Some demo files for the [open-source Substrate package](https://github.com/jhuap
 npm install --save apl-substrate
 ```
 
+For each demo, you will need to pack the index into a bundle using webpack. You can do this either by running `webpack index.js bundle.js` or `npm run webpack`, which will do this for you. In either case, you will need to have webpack installed: `npm install -g webpack`.
+
 ## Table of Contents
 
 | Folder | Description |
